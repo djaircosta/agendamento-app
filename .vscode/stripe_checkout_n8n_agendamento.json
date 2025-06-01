@@ -1,0 +1,98 @@
+{
+  "name": "Stripe Checkout - Agendamento 1h",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "criar-sessao-checkout",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "Webhook",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        250,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "authentication": "apiKey",
+        "resource": "checkoutSession",
+        "operation": "create",
+        "returnAll": true,
+        "lineItemsUi": {
+          "lineItemsValues": [
+            {
+              "priceData": {
+                "currency": "brl",
+                "productData": {
+                  "name": "Agendamento de 1h"
+                },
+                "unitAmount": 5000
+              },
+              "quantity": 1
+            }
+          ]
+        },
+        "successUrl": "https://example.com/success",
+        "cancelUrl": "https://example.com/cancel",
+        "mode": "payment"
+      },
+      "id": "Stripe",
+      "name": "Criar Sess\u00e3o Stripe",
+      "type": "n8n-nodes-base.stripe",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ],
+      "credentials": {
+        "stripeApi": "Stripe Account"
+      }
+    },
+    {
+      "parameters": {
+        "responseData": "firstEntryJson",
+        "options": {}
+      },
+      "id": "Responder",
+      "name": "Responder com URL",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        750,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Criar Sess\u00e3o Stripe",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Criar Sess\u00e3o Stripe": {
+      "main": [
+        [
+          {
+            "node": "Responder com URL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": ,
+  "settings": {},
+  "versionId": "v-20250515160648"
+}

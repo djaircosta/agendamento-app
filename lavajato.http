@@ -1,0 +1,10 @@
+POST http://localhost:5678/webhook-test/criar-sessao-checkout
+Content-Type: application/json
+
+{
+  "cliente": "Fulano",
+  "data": "2025-06-01",
+  "servico": "Lavagem Simples",
+  "valor": 5000,
+  "horario": "09:00"
+}

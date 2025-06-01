@@ -1,0 +1,12 @@
+{
+    "expo": {
+      "name": "lavajato-app",
+      "slug": "lavajato-app",
+      "version": "1.0.0",
+      "sdkVersion": "52.0.0",
+      "plugins": ["expo-router"],
+      "platforms": ["ios", "android", "web"],
+      "assetBundlePatterns": ["**/*"]
+    }
+  }
+  

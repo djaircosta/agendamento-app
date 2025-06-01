@@ -1,7 +1,12 @@
 {
+  "react-native.packager.port": 8081,
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit",
     "source.sortMembers": "explicit"
-  }
+  },
+  "cmake.sourceDirectory": "/home/proteus/Desktop/projects/github/lavajato-app/node_modules/expo-modules-core/android"
 }
+
+
+
